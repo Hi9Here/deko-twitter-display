@@ -1,0 +1,104 @@
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-image/iron-image.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<!--
+  `<link-display></link-display>` Card Displaying a link
+  @demo demo.html
+-->
+<dom-module id="link-display">
+  <template>
+    <style is="custom-style">
+      :host {
+        display:block;
+        color:#505050;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+        min-height: 225px;
+      }
+      iron-image {
+        margin: 5px 0px 5px 0px;
+        max-height: 225px;
+      }
+      h2 {
+        font-weight: 300;
+        font-size: 18px;
+        margin: 0px;
+      }
+      .container {
+        text-align: center;
+        display: block;
+      }
+      h3 {
+        font-weight: 300;
+        font-size: 14px;
+        margin: 0px;
+      }
+      #card-image {
+        display: inline-block;
+      }
+      #card-title {
+        display: block;
+        width: 180px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin: 0px 10px;
+      }
+      #card-text {
+        text-align: left;
+        display: block;
+        width: 180px;
+        height: 63px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 10px;
+      }
+    </style>
+    <div class="container" on-tap="open">
+      <template is="dom-if" if="[[link.title]]">
+        <div id="card-image">
+          <iron-image src="[[link.image]]"></iron-image>
+        </div>
+        <div id="card-title">
+          <h2>[[link.title]]</h2>
+        </div>
+        <div id="card-text">
+          <h3>[[link.desc]]</h3>
+        </div>
+      </template>
+      <template is="dom-if" if="[[title]]">
+        <div id="card-image">
+          <template is="dom-if" if="[[image]]">
+            <iron-image src="[[image]]"></iron-image>
+          </template>
+          <template is="dom-if" if="[[cardicon]]">
+            <iron-image src="[[cardicon]]"></iron-image>
+          </template>
+        </div>
+        <div id="card-title">
+          <h2>[[title]]</h2>
+        </div>
+        <div id="card-text">
+          <h3>[[desc]]</h3>
+        </div>
+      </template>
+    </div>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "link-display",
+    properties: {
+      link: {
+        type: Object,
+      },
+    },
+    open:function(){
+      this.fire("open")
+      var that = this
+      setTimeout(function () {
+        window.location.href = that.link.link
+      }, 10)
+    }
+  })
+</script>

@@ -1,0 +1,18 @@
+{
+  "name": "link-display",
+  "version": "1.0.0",
+  "description": "\n    \n    \n    \n  ",
+  "main": "link-display.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "iron-flex-layout": "*",
+    "iron-image": "PolymerElements/iron-image"
+  },
+  "devDependencies": {
+    "iron-test-helpers": "*",
+    "web-component-tester": "^5.0.0"
+  }
+}
